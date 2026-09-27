@@ -2,12 +2,8 @@
 
 I built this Python trading system solo and ran it live with my own capital; this repo is its architecture write-up. It runs a hedged tokenized-equity arbitrage: it trades six Solana DEX protocols directly on-chain and hedges on Alpaca and Hyperliquid, with the same strategy code running live and in deterministic replay. The implementation is private; questions are welcome at jannismenzler@gmail.com.
 
-**Tech:** Python (asyncio) · Solana on-chain swaps · Hyperliquid · Alpaca · Numba · TimescaleDB · Redpanda · Prometheus/Grafana/Loki · deterministic replay
-
 - **Scope:** 8 venues: six Solana DEX protocols with my own pool-state decoding, quoting and swap-instruction building, plus Alpaca (US equities) and Hyperliquid (perps).
-- **Hard problems:** confirming the hedge fits before committing an irreversible on-chain leg, treating orders of unclear fate as unknown rather than failed, and reconciling one position across venues that each hold part of the truth.
 - **Live/replay parity:** the production strategy, portfolio and hedge manager run unchanged in a deterministic backtester, and the remaining differences are audited and listed below.
-- **Latency:** Numba quote kernels cut p95 latency of the strategy-to-router path by 28–31% in a controlled ABBA benchmark.
 
 ## At a glance
 
