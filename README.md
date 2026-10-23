@@ -27,6 +27,7 @@
 
 > [!NOTE]
 > This repository is an architecture overview. The implementation is private; questions are welcome at jannismenzler@gmail.com.
+> The one exception is the C++ quote kernel in [`cpp/quote/`](cpp/quote/): it is self-contained, mirrors the public on-chain programs' math and backs the C++ claims below.
 
 ## Overview
 
