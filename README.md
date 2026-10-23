@@ -32,7 +32,7 @@
 
 Tokenized US equities (xStocks) trade in Solana AMM pools whose prices move only when someone trades on-chain, while price discovery for the same stocks is continuous on CEX and NBBO feeds. Fee-adjusted CEX fair value and the pool-implied price drift apart until the next on-chain trade closes the gap. The system takes the DEX leg when that gap clears an adaptive threshold and **immediately hedges it on a CEX or perp venue**, so it earns the basis instead of carrying directional inventory.
 
-This is not a latency race: pool state arrives at Solana block cadence, which sets a floor no internal speedup changes. The engineering problem is getting *correct* prices, fills and hedges from six different AMM designs, and making backtest, replay and live agree on what a trade would have earned.
+Latency matters, but it is bounded by Solana's block cadence: the system has to quote and act before the next block lands, not win a microsecond race. The harder engineering problem is getting *correct* prices, fills and hedges from six different AMM designs, and making backtest, replay and live agree on what a trade would have earned.
 
 ![One tokenized equity priced on two Solana pools, Alpaca and Hyperliquid over one hour](images/multi-venue-prices.png)
 
